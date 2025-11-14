@@ -1,1 +1,25 @@
-tmp
+sray – Ray on Slurm helper
+==========================
+
+`sray` is a small Python script that starts a Ray head node on the current
+machine and provisions Ray workers on a Slurm cluster using `srun`.
+
+Usage
+-----
+
+```bash
+python sray.py --nodes 4 --cpus-per-node 8 --gpus-per-node 1 --partition gpu
+```
+
+Options include:
+
+* `--nodes`: total nodes to allocate (default: 2)
+* `--gpus-per-node`: GPUs to request for each node (default: 0)
+* `--cpus-per-node`: CPUs to request for each node (default: 4)
+* `--mem-per-node`: Slurm-style memory string per node (default: 16G)
+* `--partition`: optional Slurm partition
+* `--dashboard-port`: dashboard port (default: 8265)
+* `--port`: Ray head GCS port (default: 6379)
+* `--ray-client-port`: Ray client port (default: 10001)
+
+Stop the script with Ctrl+C to release the cluster resources.
